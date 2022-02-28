@@ -2,7 +2,7 @@
 *.local
 node_modules
 output
-password.json
+private.json
 .husky
 
 # local env files

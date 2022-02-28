@@ -1,12 +1,12 @@
 import { config } from './config';
 import { createConnection } from 'typeorm';
-import { getPassword } from './util/password';
+import { getPrivateConfig } from './util/privateConfig';
 
 export const initDbConnection = async () => {
+  const { db: privateDbConfig } = getPrivateConfig(config.privateConfigPath);
   await createConnection({
     ...config.db,
-    password: getPassword(config.db.passwordPath),
-    type: 'mysql'
+    ...privateDbConfig
   });
   console.log('init db successful');
 };
