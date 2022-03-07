@@ -1,4 +1,5 @@
 import express from 'express';
+import { ArticleController } from './controller/articleController';
 import { HomepageController } from './controller/homepageController';
 import { KnowledgeController } from './controller/knowledgeController';
 import { LearnController } from './controller/learnController';
@@ -9,6 +10,7 @@ export const getRouter = () => {
   const learnController = new LearnController();
   const knowledgeController = new KnowledgeController();
   const userActionController = new UserActionController();
+  const articleController = new ArticleController();
 
   const router = express.Router();
 
@@ -24,5 +26,9 @@ export const getRouter = () => {
   router.post('/actions', userActionController.addUserAction);
   router.get('/actions/export', userActionController.exportUserAction);
   router.get('/actions/analyze', userActionController.analyzeUserAction);
+  router.get('/article', articleController.getArticle);
+  router.get('/article/tag', articleController.getAllTag);
+  router.get('/article/getByTag', articleController.getArticleByTag);
+
   return router;
 };

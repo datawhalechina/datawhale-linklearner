@@ -2,7 +2,7 @@
   <div class="navigator">
     <div class="navigator-left">Datawhale</div>
     <el-menu
-      :default-active="convertRouterIndexToMenuIndex($store.state.routerIndex)"
+      :default-active="getDefaultActiveMenu($store.state.routerIndex)"
       class="navigator-menu"
       mode="horizontal"
       @select="handleSelect"
@@ -10,6 +10,14 @@
       <el-menu-item class="navigator-menu-item" index="homepage"> 主页 </el-menu-item>
       <el-menu-item class="navigator-menu-item" index="learn"> 学习项目 </el-menu-item>
       <el-menu-item class="navigator-menu-item" index="knowledge"> 培养方案 </el-menu-item>
+      <el-sub-menu index="article">
+        <template #title>干货文章</template>
+        <el-menu-item index="article1">科研求职</el-menu-item>
+        <el-menu-item index="article2">项目实战</el-menu-item>
+        <el-menu-item index="article3">学习经验</el-menu-item>
+        <el-menu-item index="article4">基础知识</el-menu-item>
+        <el-menu-item index="article5">实践排坑</el-menu-item>
+      </el-sub-menu>
     </el-menu>
     <div class="navigator-right">
       <el-popover placement="bottom" :width="200" trigger="hover">
@@ -27,43 +35,65 @@
 </template>
 
 <script lang="ts">
-import { ROUTER_MAP } from '../router/constant';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import githubLogo from '../asset/github.svg';
 import wechatLogo from '../asset/wechat.svg';
-
-// routerIndex与menuIndex的映射关系
-const ROUTER_MENU_RELATION = [
-  { routerIndex: '0', menuIndex: 'homepage' },
-  { routerIndex: '1', menuIndex: 'learn' },
-  { routerIndex: '2', menuIndex: 'knowledge' },
-  { routerIndex: '3', menuIndex: 'learn' },
-  { routerIndex: '4', menuIndex: '' }
-];
 
 export default {
   setup() {
     const store = useStore();
     const router = useRouter();
 
-    const convertRouterIndexToMenuIndex = (routerIndex: string) => {
-      const relation = ROUTER_MENU_RELATION.filter((item) => item.routerIndex === routerIndex);
-      const menuIndex = relation[0].menuIndex;
-      return menuIndex;
+    const getDefaultActiveMenu = (routerIndex: string) => {
+      // routerIndex与menuIndex的映射关系
+      const ROUTER_MENU_RELATION = {
+        '/': () => {
+          return 'homepage';
+        },
+        '/learn': () => {
+          return 'learn';
+        },
+        '/knowledge': () => {
+          return 'knowledge';
+        },
+        '/learn/detail/:learnId': () => {
+          return 'learn';
+        },
+        '/article/:articleId': () => {
+          const articleId = router.currentRoute.value.params.articleId;
+          return `article${articleId}`;
+        },
+        '/analyzer': () => {
+          return '';
+        }
+      };
+
+      const getMenuIndexFunction = ROUTER_MENU_RELATION[routerIndex];
+      return getMenuIndexFunction ? getMenuIndexFunction() : 'homepage';
     };
 
     const handleSelect = (key: string) => {
-      const relation = ROUTER_MENU_RELATION.filter((item) => item.menuIndex === key);
-      const routerIndex = relation[0].routerIndex;
-      store.commit('setRouterIndex', routerIndex);
-      router.push(ROUTER_MAP[routerIndex]);
+      // menuIndex与routerIndex的映射关系
+      const MENU_ROUTER_RELATION = {
+        homepage: '/',
+        learn: '/learn',
+        knowledge: '/knowledge',
+        article1: '/article/1',
+        article2: '/article/2',
+        article3: '/article/3',
+        article4: '/article/4',
+        article5: '/article/5'
+      };
+
+      const routerIndex = MENU_ROUTER_RELATION[key] || '/';
+      router.push(routerIndex);
     };
 
     const goGithub = () => {
       window.open('https://github.com/datawhalechina');
     };
-    return { convertRouterIndexToMenuIndex, handleSelect, goGithub };
+    return { getDefaultActiveMenu, handleSelect, goGithub };
   },
   components: { githubLogo, wechatLogo }
 };

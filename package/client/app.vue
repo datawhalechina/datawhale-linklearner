@@ -2,7 +2,7 @@
   <div v-if="viewValid">
     <app-navigator></app-navigator>
     <div class="router-view">
-      <router-view></router-view>
+      <router-view :key="$route.fullPath"></router-view>
     </div>
   </div>
   <div v-else class="invalid-view">

@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import { ROUTER_MAP } from './constant';
 import store from '../store';
 
 const homepage = () => import(/* webpackChunkName: 'homepage' */ '../page/homepage/homepage.vue');
@@ -8,43 +7,47 @@ const knowledge = () =>
   import(/* webpackChunkName: 'knowledge' */ '../page/knowledge/knowledge.vue');
 const learnDetail = () =>
   import(/* webpackChunkName: 'learnDetail' */ '../page/learnDetail/learnDetail.vue');
-  const analyzer = () =>
-    import(/* webpackChunkName: 'analyzer' */ '../page/analyzer/analyzer.vue');
+const article = () => import(/* webpackChunkName: 'article' */ '../page/article/article.vue');
+const analyzer = () => import(/* webpackChunkName: 'analyzer' */ '../page/analyzer/analyzer.vue');
 
 const routerHashHistory = createWebHashHistory();
 
+const ROUTES = [
+  {
+    path: '/',
+    component: homepage
+  },
+  {
+    path: '/learn',
+    component: learn
+  },
+  {
+    path: '/knowledge',
+    component: knowledge
+  },
+  {
+    path: '/learn/detail/:learnId',
+    component: learnDetail
+  },
+  {
+    path: '/article/:articleId',
+    component: article
+  },
+  {
+    path: '/analyzer',
+    component: analyzer
+  }
+];
+
 const router = createRouter({
   history: routerHashHistory,
-  routes: [
-    {
-      path: ROUTER_MAP[0],
-      component: homepage
-    },
-    {
-      path: ROUTER_MAP[1],
-      component: learn
-    },
-    {
-      path: ROUTER_MAP[2],
-      component: knowledge
-    },
-    {
-      path: ROUTER_MAP[3],
-      component: learnDetail
-    },
-    {
-      path: ROUTER_MAP[4],
-      component: analyzer
-    }
-  ]
+  routes: ROUTES
 });
 
 router.beforeEach((to, from, next) => {
-  for (const key in ROUTER_MAP) {
-    if (to.matched && to.matched.length > 0 && ROUTER_MAP[key] === to.matched[0].path) {
-      store.commit('setRouterIndex', key);
-      break;
-    }
+  const routePathList = ROUTES.map((item) => item.path);
+  if (to.matched && to.matched.length > 0 && routePathList.includes(to.matched[0].path)) {
+    store.commit('setRouterIndex', to.matched[0].path);
   }
   next();
 });

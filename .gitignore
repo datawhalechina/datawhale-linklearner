@@ -4,6 +4,7 @@ node_modules
 output
 private.json
 .husky
+temp
 
 # local env files
 .env.local
