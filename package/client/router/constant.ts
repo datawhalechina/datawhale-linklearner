@@ -4,4 +4,5 @@ export const ROUTER_MAP = {
   2: '/knowledge',
   3: '/learn/detail/:learnId',
   4: '/analyzer',
+  5: '/articles'
 };

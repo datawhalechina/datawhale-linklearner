@@ -10,6 +10,7 @@
       <el-menu-item class="navigator-menu-item" index="homepage"> 主页 </el-menu-item>
       <el-menu-item class="navigator-menu-item" index="learn"> 学习项目 </el-menu-item>
       <el-menu-item class="navigator-menu-item" index="knowledge"> 培养方案 </el-menu-item>
+			 <el-menu-item class="navigator-menu-item" index="articles"> 干货文章 </el-menu-item>
     </el-menu>
     <div class="navigator-right">
       <el-popover placement="bottom" :width="200" trigger="hover">
@@ -39,6 +40,7 @@ const ROUTER_MENU_RELATION = [
   { routerIndex: '1', menuIndex: 'learn' },
   { routerIndex: '2', menuIndex: 'knowledge' },
   { routerIndex: '3', menuIndex: 'learn' },
+	{ routerIndex: '5', menuIndex: 'articles' },
   { routerIndex: '4', menuIndex: '' }
 ];
 
