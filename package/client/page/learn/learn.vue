@@ -91,8 +91,9 @@ export default {
 }
 .learn-tag {
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 .learn-tag-item {
-  margin-right: 8px;
+  margin: 4px;
 }
 </style>

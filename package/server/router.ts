@@ -29,6 +29,7 @@ export const getRouter = () => {
   router.get('/article', articleController.getArticle);
   router.get('/article/tag', articleController.getAllTag);
   router.get('/article/getByTag', articleController.getArticleByTag);
+  router.post('/article', articleController.addArticle);
 
   return router;
 };

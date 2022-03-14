@@ -47,7 +47,7 @@ export class UserActionService {
     try {
       analyzer.addLog(output);
     } catch (e) {
-      throw Error('日志太多，分析不过来了QAQ')
+      throw Error('日志太多，分析不过来了QAQ');
     }
 
     const overviewData = analyzer.getOverview();

@@ -19,7 +19,10 @@ const main = async () => {
   await initTracker();
   setLogReportTimer();
 
-  console.log('%c 感谢 ZY、文昕、小丽同学对 DATAWHALE 官网的辛苦付出','color:#409EFF;font-size:20px;text-shadow: 2px 2px 2px #b3d8ff;');
+  console.log(
+    '%c 感谢 ZY、文昕、小丽同学对 DATAWHALE 官网的辛苦付出',
+    'color:#409EFF;font-size:20px;text-shadow: 2px 2px 2px #b3d8ff;'
+  );
 };
 
 main();

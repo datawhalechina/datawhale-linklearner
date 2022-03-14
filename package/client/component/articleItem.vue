@@ -3,7 +3,7 @@
     <img class="article-image" :src="imageUrl" />
     <div class="article-detail">
       <div class="article-detail-name">{{ name }}</div>
-      <div class="article-detail-description"> 作者：{{ author }}</div>
+      <div class="article-detail-description">作者：{{ author }}</div>
       <div class="article-detail-tag-group flex-row-left">
         <el-tag
           class="article-detail-tag"

@@ -3,7 +3,11 @@
     <div class="homepage-banner">
       <el-carousel trigger="click" height="400px" arrow="never">
         <el-carousel-item v-for="(item, index) in banner" :key="`carousel-item-${index}`">
-          <div class="homepage-banner-item" :style="`background-image: url('${item.url}')`" @click="jumpToUrl(item.linkUrl)">
+          <div
+            class="homepage-banner-item"
+            :style="`background-image: url('${item.url}')`"
+            @click="jumpToUrl(item.linkUrl)"
+          >
             <div class="homepage-banner-text">{{ item.description }}</div>
           </div>
         </el-carousel-item>

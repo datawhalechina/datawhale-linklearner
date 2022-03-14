@@ -16,11 +16,7 @@ const sendResponse = (
   return res.status(httpCode).json({ status: statusCode, data, message });
 };
 
-export const sendSuccessResponse = (
-  res: Response,
-  data: any,
-  message?: string
-) => {
+export const sendSuccessResponse = (res: Response, data: any, message?: string) => {
   return sendResponse(res, 200, data, message || 'success', STATUS_CODE.SUCCESS);
 };
 

@@ -101,8 +101,9 @@ export default {
 }
 .article-tag {
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 .article-tag-item {
-  margin-right: 8px;
+  margin: 4px;
 }
 </style>

@@ -84,4 +84,50 @@ export class ArticleService {
       }
     });
   };
+
+  addArticle = async (article: Partial<ArticleEntity>) => {
+    return this.articleRepository.save(article);
+  };
+
+  // 新增文章标签，若已有相同标签，则不处理
+  addArticleTag = async (articleTag: string) => {
+    const existArticleTag = await this.articleTagRepository.findOne({
+      where: {
+        name: articleTag
+      }
+    });
+
+    if (existArticleTag) {
+      return existArticleTag;
+    }
+
+    return this.articleTagRepository.save({
+      name: articleTag,
+      createTime: new Date(),
+      modifyTime: new Date()
+    });
+  };
+
+  addArticleWithTag = async (
+    article: Partial<ArticleEntity>,
+    tagList: Partial<ArticleTagEntity>[]
+  ) => {
+    const { id: articleId } = await this.addArticle({
+      ...article,
+      createTime: new Date(),
+      modifyTime: new Date()
+    });
+
+    const articleTagRelationList = tagList.map((item) => {
+      return {
+        articleId,
+        articleTagId: item.id,
+        createTime: new Date(),
+        modifyTime: new Date()
+      };
+    });
+
+    await this.articleTagRelationRepository.save(articleTagRelationList);
+    return articleId;
+  };
 }

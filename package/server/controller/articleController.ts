@@ -62,6 +62,35 @@ export class ArticleController {
       sendErrorResponse(res, e.message);
     }
   };
+
+  addArticle = async (req: Request, res: Response) => {
+    try {
+      const { area, name, author, imageUrl, url, releaseTime, tags } = req.body;
+      const tagList = tags.split(',');
+
+      // 先新增文章标签，然后新增文章，最后新增文章关系
+      const articleTagList = await Promise.all(
+        tagList.map((tag) => {
+          return this.articleService.addArticleTag(tag);
+        })
+      );
+
+      const article = {
+        area: parseInt(area as string),
+        name,
+        author,
+        imageUrl,
+        url,
+        releaseTime: new Date(releaseTime)
+      };
+
+      const articleId = await this.articleService.addArticleWithTag(article, articleTagList);
+
+      sendSuccessResponse(res, articleId, 'add article success');
+    } catch (e) {
+      sendErrorResponse(res, e.message);
+    }
+  };
 }
 
 interface IArticleItem {
