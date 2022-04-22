@@ -67,7 +67,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../index.html'),
       filename: 'index.html',
-      title: 'datawhale-homepage'
+      title: 'DATAWHALE - 一个热爱学习的社区',
+      description: 'DATAWHALE 开源学习社区 数据科学 人工智能 算法',
     }),
     new VueLoaderPlugin()
     // AutoImport({
