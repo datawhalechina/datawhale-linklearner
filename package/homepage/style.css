@@ -1378,7 +1378,7 @@ table.alt tbody tr td {
   -ms-flex-direction: column;
   flex-direction: column;
   padding: 8em 0 6em 0;
-  background-image: url('../../assets/images/banner.jpg');
+  background-image: url('https://oss.linklearner.com/SEO/banner.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
