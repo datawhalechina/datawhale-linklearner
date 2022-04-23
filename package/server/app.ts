@@ -18,6 +18,7 @@ const main = async () => {
   app.use(bodyParser.json());
 
   app.use('/datawhale-homepage', express.static(config.staticFilePath));
+  app.use('/', express.static(config.homepageFilePath));
   // 使用getRouter是为了防止在建立dbconnection之前初始化entity
   app.use('/api', getRouter());
   app.listen(port, () => {

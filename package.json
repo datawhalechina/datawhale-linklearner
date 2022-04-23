@@ -3,8 +3,9 @@
 	"description": "datawhale homepage",
 	"scripts": {
 		"bootstrap": "npm install -g pnpm pm2 ",
-		"build:all": "npm run clean && npm run build:client && npm run build:server",
+		"build:all": "npm run clean && npm run build:client && npm run build:homepage && npm run build:server",
 		"build:client": "NODE_ENV=prod webpack --config ./package/client/build/webpack.prod.js",
+		"build:homepage": "cp -r ./package/homepage ./output",
 		"build:server": "NODE_ENV=prod tsc --p ./package/server",
 		"clean": "rm -rf output",
 		"dev:all": "npm run dev:client & npm run dev:server",

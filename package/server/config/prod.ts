@@ -6,5 +6,6 @@ export const productionConfig = {
     type: 'mysql',
     entities: [path.join(__dirname, '../entity/**/*.js')]
   },
-  staticFilePath: path.join(__dirname, '../client')
+  staticFilePath: path.join(__dirname, '../client'),
+  homepageFilePath: path.join(__dirname, '../homepage')
 };
