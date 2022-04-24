@@ -24,6 +24,7 @@
       <knowledge-detail v-if="selectedId !== '0'" :content="content"></knowledge-detail>
     </div>
   </div>
+  <app-footer></app-footer>
 </template>
 
 <script lang="ts">
@@ -31,11 +32,13 @@ import { onMounted, reactive, toRefs } from 'vue';
 import { http } from '../../service/http';
 import knowledgeDetail from './knowledgeDetail.vue';
 import knowledgeOverview from './knowledgeOverview.vue';
+import appFooter from '../../component/appFooter.vue';
 
 export default {
   components: {
     knowledgeDetail,
-    knowledgeOverview
+    knowledgeOverview,
+    appFooter
   },
   setup() {
     const data = reactive({
@@ -72,10 +75,10 @@ export default {
 
 <style scoped>
 .knowledge {
-  height: calc(100vh - 61px);
+  height: calc(100vh - 61px - 54px);
 }
 .knowledge-side-menu {
-  height: calc(100vh - 61px);
+  height: calc(100vh - 61px - 54px);
   overflow: auto;
   width: 200px;
   font-size: 14px;
@@ -94,7 +97,7 @@ export default {
 }
 .knowledge-content {
   width: 100%;
-  height: calc(100vh - 61px);
+  height: calc(100vh - 61px - 54px);
   overflow: auto;
 }
 </style>

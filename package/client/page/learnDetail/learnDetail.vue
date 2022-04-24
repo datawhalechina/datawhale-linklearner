@@ -59,6 +59,7 @@
       </div>
     </div>
   </div>
+  <app-footer></app-footer>
 </template>
 
 <script lang="ts">
@@ -69,9 +70,10 @@ import { convertMarkdownToHtml } from '../../util/convertMarkdown';
 import learnAnchor from './learnAnchor.vue';
 import { HEADER_HEIGHT, isInViewPort } from '../../util/scroll';
 import { MIN_LEARN_WIDTH } from '../../constant';
+import appFooter from '../../component/appFooter.vue';
 
 export default {
-  components: { learnAnchor },
+  components: { learnAnchor, appFooter },
   setup() {
     const router = useRouter();
     const learnContentElement = ref<HTMLElement | null>(null);
@@ -210,12 +212,12 @@ export default {
 <style scoped>
 .learn-detail {
   text-align: left;
-  height: calc(100vh - 61px);
+  height: calc(100vh - 61px - 54px);
 }
 .learn-detail-menu {
   width: 200px;
   flex-shrink: 0;
-  height: calc(100vh - 61px);
+  height: calc(100vh - 61px - 54px);
   overflow: auto;
 }
 .learn-detail-menu-item {
@@ -225,7 +227,7 @@ export default {
 }
 .learn-content {
   width: 100%;
-  height: calc(100vh - 61px);
+  height: calc(100vh - 61px - 54px);
   overflow: auto;
 }
 .learn-anchor-wrapper {

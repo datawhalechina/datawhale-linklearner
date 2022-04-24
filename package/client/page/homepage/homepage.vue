@@ -51,6 +51,7 @@
       </el-card>
     </div>
   </div>
+  <app-footer></app-footer>
 </template>
 
 <script lang="ts">
@@ -58,9 +59,10 @@ import { onMounted, reactive, toRefs } from 'vue';
 import { http } from '../../service/http';
 import learnItem from '../../component/learnItem.vue';
 import { useRouter } from 'vue-router';
+import appFooter from '../../component/appFooter.vue';
 
 export default {
-  components: { learnItem },
+  components: { learnItem, appFooter },
   setup() {
     const router = useRouter();
 

@@ -35,6 +35,7 @@
       </div>
     </div>
   </div>
+  <app-footer></app-footer>
 </template>
 
 <script lang="ts">
@@ -42,9 +43,10 @@ import { onMounted, reactive, toRefs } from 'vue';
 import { http } from '../../service/http';
 import articleItem from '../../component/articleItem.vue';
 import { useRouter } from 'vue-router';
+import appFooter from '../../component/appFooter.vue';
 
 export default {
-  components: { articleItem },
+  components: { articleItem, appFooter },
   setup() {
     const router = useRouter();
 
