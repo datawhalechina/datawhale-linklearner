@@ -16,7 +16,7 @@
 <script lang="ts">
 import { onMounted, ref } from 'vue';
 import * as echarts from 'echarts';
-import { http } from '../../service/axios';
+import { http } from '../../service/http';
 
 export default {
   name: 'knowledge-overview',

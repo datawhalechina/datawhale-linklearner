@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import { onMounted, reactive, toRefs } from 'vue';
-import { http } from '../../service/axios';
+import { http } from '../../service/http';
 import knowledgeDetail from './knowledgeDetail.vue';
 import knowledgeOverview from './knowledgeOverview.vue';
 

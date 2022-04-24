@@ -17,12 +17,17 @@ const main = async () => {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
 
-  /**
-   * 解释一下背景，原来的前端页面挂在了 linklearner.com/datawhale-homepage 下，
-   * 后来改成了 linklearner.com 下，所以这里放了两份静态资源。
-   */
-  app.use('/datawhale-homepage', express.static(config.staticFilePath));
-  app.use('/', express.static(config.staticFilePath));
+  // development 环境不挂载静态资源
+  if (process.env.NODE_ENV !== 'development') {
+    /**
+     * 解释一下背景，原来的前端页面挂在了 linklearner.com/datawhale-homepage 下，
+     * 后来改成了 linklearner.com 下，所以这里放了两份静态资源。
+     */
+    app.use('/datawhale-homepage', express.static(config.staticFilePath));
+    app.use('/', express.static(config.staticFilePath));
+  }
+  
+  app.use('/about', express.static(config.aboutFilePath));
 
   // 使用getRouter是为了防止在建立dbconnection之前初始化entity
   app.use('/api', getRouter());

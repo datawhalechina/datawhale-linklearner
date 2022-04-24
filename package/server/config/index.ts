@@ -4,7 +4,7 @@ import { productionConfig } from './prod';
 const env = process.env.NODE_ENV;
 
 const getConfig = () => {
-  if (env === 'dev') {
+  if (env === 'development') {
     return developmentConfig;
   }
   return productionConfig;

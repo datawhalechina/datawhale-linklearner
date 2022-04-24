@@ -1,6 +1,6 @@
 import tracker from 'shadow-tracker';
 import fingerprintJS from '@fingerprintjs/fingerprintjs';
-import { http } from '../service/axios';
+import { http } from '../service/http';
 
 export const initTracker = async () => {
   const fingerprint = await fingerprintJS.load({ monitoring: false });

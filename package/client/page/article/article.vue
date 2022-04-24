@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import { onMounted, reactive, toRefs } from 'vue';
-import { http } from '../../service/axios';
+import { http } from '../../service/http';
 import articleItem from '../../component/articleItem.vue';
 import { useRouter } from 'vue-router';
 

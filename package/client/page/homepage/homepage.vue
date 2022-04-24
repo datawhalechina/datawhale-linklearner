@@ -55,7 +55,7 @@
 
 <script lang="ts">
 import { onMounted, reactive, toRefs } from 'vue';
-import { http } from '../../service/axios';
+import { http } from '../../service/http';
 import learnItem from '../../component/learnItem.vue';
 import { useRouter } from 'vue-router';
 

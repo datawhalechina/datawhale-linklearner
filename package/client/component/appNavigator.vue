@@ -18,6 +18,7 @@
         <el-menu-item index="article4">基础知识</el-menu-item>
         <el-menu-item index="article5">实践排坑</el-menu-item>
       </el-sub-menu>
+      <el-menu-item class="navigator-menu-item" index="about"> 关于我们 </el-menu-item>
     </el-menu>
     <div class="navigator-right">
       <el-popover placement="bottom" :width="200" trigger="hover">
@@ -35,14 +36,12 @@
 </template>
 
 <script lang="ts">
-import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import githubLogo from '../asset/github.svg';
 import wechatLogo from '../asset/wechat.svg';
 
 export default {
   setup() {
-    const store = useStore();
     const router = useRouter();
 
     const getDefaultActiveMenu = (routerIndex: string) => {
@@ -64,6 +63,9 @@ export default {
           const articleId = router.currentRoute.value.params.articleId;
           return `article${articleId}`;
         },
+        '/about': () => {
+          return 'about';
+        },
         '/analyzer': () => {
           return '';
         }
@@ -83,7 +85,8 @@ export default {
         article2: '/article/2',
         article3: '/article/3',
         article4: '/article/4',
-        article5: '/article/5'
+        article5: '/article/5',
+        about: '/about'
       };
 
       const routerIndex = MENU_ROUTER_RELATION[key] || '/';

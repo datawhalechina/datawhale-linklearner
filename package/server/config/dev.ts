@@ -7,5 +7,5 @@ export const developmentConfig = {
     entities: [path.join(__dirname, '../entity/**/*.ts')]
   },
   staticFilePath: path.join(__dirname, '../../../output/client'),
-  homepageFilePath: path.join(__dirname, '../../../output/homepage')
+  aboutFilePath: path.join(__dirname, '../../about')
 };

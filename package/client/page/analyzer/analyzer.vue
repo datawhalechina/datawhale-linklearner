@@ -108,7 +108,7 @@
 
 <script lang="ts">
 import { onMounted, reactive, toRefs, watch } from 'vue';
-import { http } from '../../service/axios';
+import { http } from '../../service/http';
 import { ElMessage } from 'element-plus';
 
 export default {

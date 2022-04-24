@@ -64,7 +64,7 @@
 <script lang="ts">
 import { onMounted, reactive, toRefs, ref, nextTick } from 'vue';
 import { useRouter } from 'vue-router';
-import { http } from '../../service/axios';
+import { http } from '../../service/http';
 import { convertMarkdownToHtml } from '../../util/convertMarkdown';
 import learnAnchor from './learnAnchor.vue';
 import { HEADER_HEIGHT, isInViewPort } from '../../util/scroll';
