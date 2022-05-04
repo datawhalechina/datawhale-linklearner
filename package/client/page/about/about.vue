@@ -6,12 +6,12 @@
 
 <script lang="ts">
 import { reactive, toRefs } from 'vue';
-import { BACKEND_BASE_URL } from '../../service/http';
+import { DATAWHALE_HOMEPAGE_URL } from '../../service/http';
 
 export default {
   setup() {
     const data = reactive({
-      aboutUrl: `${BACKEND_BASE_URL}/about`
+      aboutUrl: DATAWHALE_HOMEPAGE_URL
     });
 
     return {

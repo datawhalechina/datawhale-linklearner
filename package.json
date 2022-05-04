@@ -3,9 +3,8 @@
 	"description": "datawhale linklearner website",
 	"scripts": {
 		"bootstrap": "npm install -g pnpm pm2 ",
-		"build:all": "npm run clean && npm run build:server && npm run build:about && npm run build:client",
+		"build:all": "npm run clean && npm run build:server && npm run build:client",
 		"build:client": "NODE_ENV=production webpack --config ./package/client/build/webpack.prod.js",
-		"build:about": "cp -r ./package/about ./output",
 		"build:server": "NODE_ENV=production tsc --p ./package/server",
 		"clean": "rm -rf output",
 		"dev:all": "npm run clean && npm run dev:client & npm run dev:server",
