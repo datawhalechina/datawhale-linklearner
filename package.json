@@ -1,6 +1,6 @@
 {
-	"name": "datawhale-homepage",
-	"description": "datawhale homepage",
+	"name": "datawhale-linklearner",
+	"description": "datawhale linklearner website",
 	"scripts": {
 		"bootstrap": "npm install -g pnpm pm2 ",
 		"build:all": "npm run clean && npm run build:server && npm run build:about && npm run build:client",
