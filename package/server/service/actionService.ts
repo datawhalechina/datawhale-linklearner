@@ -29,8 +29,12 @@ export class UserActionService {
     const sessionLogList = res.map((item) => item.logList);
 
     sessionLogList.forEach((item) => {
-      const logList = JSON.parse(item);
-      output.push(...logList);
+      try {
+        const logList = JSON.parse(item);
+        output.push(...logList);
+      } catch (e) {
+        console.warn('not json format', item);
+      }
     });
 
     return output;
