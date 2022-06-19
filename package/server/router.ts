@@ -4,6 +4,7 @@ import { HomepageController } from './controller/homepageController';
 import { KnowledgeController } from './controller/knowledgeController';
 import { LearnController } from './controller/learnController';
 import { UserActionController } from './controller/userActionController';
+import { CompetitionController } from './controller/competitionController';
 
 export const getRouter = () => {
   const homepageController = new HomepageController();
@@ -11,6 +12,7 @@ export const getRouter = () => {
   const knowledgeController = new KnowledgeController();
   const userActionController = new UserActionController();
   const articleController = new ArticleController();
+  const competitionController = new CompetitionController();
 
   const router = express.Router();
 
@@ -30,6 +32,7 @@ export const getRouter = () => {
   router.get('/article/tag', articleController.getAllTag);
   router.get('/article/getByTag', articleController.getArticleByTag);
   router.post('/article', articleController.addArticle);
+  router.get('/competition', competitionController.getCompetitonList);
 
   return router;
 };
