@@ -1,4 +1,4 @@
-# 【WIP】datawhale linklearner 网站
+# datawhale linklearner 网站
 
 ## 一、技术选型
 
