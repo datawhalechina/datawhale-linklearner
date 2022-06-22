@@ -10,6 +10,7 @@
       <el-menu-item class="navigator-menu-item" index="homepage"> 主页 </el-menu-item>
       <el-menu-item class="navigator-menu-item" index="learn"> 学习项目 </el-menu-item>
       <el-menu-item class="navigator-menu-item" index="knowledge"> 培养方案 </el-menu-item>
+      <el-menu-item class="navigator-menu-item" index="competition"> 竞赛实践 </el-menu-item>
       <el-sub-menu index="article">
         <template #title>干货文章</template>
         <el-menu-item index="article1">科研求职</el-menu-item>
@@ -56,6 +57,9 @@ export default {
         '/knowledge': () => {
           return 'knowledge';
         },
+        '/competition': () => {
+          return 'competition';
+        },
         '/learn/detail/:learnId': () => {
           return 'learn';
         },
@@ -81,6 +85,7 @@ export default {
         homepage: '/',
         learn: '/learn',
         knowledge: '/knowledge',
+        competition: '/competition',
         article1: '/article/1',
         article2: '/article/2',
         article3: '/article/3',
