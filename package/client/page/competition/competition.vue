@@ -1,20 +1,11 @@
 <template>
   <div class="competition">
     <div class="learn-tag flex-row-left">
-      <div v-for="(item, index) in competition?.competitionTagList" :key="`learn-tag-${index}`">
+      <div v-for="(item, index) in tag" :key="`learn-tag-${index}`">
         <el-button
-          v-if="item.tagId === selectedTag"
-          type="primary"
+          :type="item.tagId === selectedTag ? primary : ''"
           :plain="true"
           class="learn-tag-item"
-          @click="handleTagChange(item.tagId)"
-        >
-          {{ item.name }}
-        </el-button>
-        <el-button
-          v-if="item.tagId !== selectedTag"
-          class="learn-tag-item"
-          :plain="true"
           @click="handleTagChange(item.tagId)"
         >
           {{ item.name }}
@@ -24,21 +15,26 @@
     <el-divider></el-divider>
     <div
       class="competition-list"
-      v-for="(item, index) in competition?.competitionList"
+      v-for="(item, index) in competition"
       :key="`competition-list-${index}`"
     >
-      <competition-item
-        :competition-item="item"
-        :tag-list="competition?.competitionTagList"
-      ></competition-item>
+      <competition-item :competition-item="item" :tag-list="tag"></competition-item>
       <el-divider class="divider"></el-divider>
     </div>
+    <el-pagination
+      background
+      v-model:currentPage="currentPage"
+      v-model:pageSize="pageSize"
+      layout="prev, pager, next"
+      :total="total"
+      style="margin: 24px 0; text-align: center"
+    />
   </div>
   <app-footer></app-footer>
 </template>
 
 <script lang="ts">
-import { onMounted, reactive, toRefs } from 'vue';
+import { onMounted, reactive, toRefs, watch } from 'vue';
 import { http } from '../../service/http';
 import competitionItem from '../../component/competitionItem.vue';
 import { useRouter } from 'vue-router';
@@ -51,7 +47,10 @@ export default {
     const data = reactive({
       competition: [],
       tag: [],
-      selectedTag: -1
+      selectedTag: -1,
+      currentPage: 1,
+      pageSize: 10,
+      total: 0
     });
 
     const handleTagChange = async (tagId: number) => {
@@ -70,9 +69,26 @@ export default {
       router.push(`/competition/detail/${learnId}`);
     };
 
+    const getCompetition = async () => {
+      let params = {
+        page: data.currentPage,
+        pageSize: data.pageSize
+      };
+      const result = await http.get('/api/competition', { params: params });
+      return result;
+    };
+
+		watch(){
+			
+		}
+
     onMounted(async () => {
-      const competition = await http.get('/api/competition');
-      data.competition = competition.data.data;
+      const result = await getCompetition();
+      if (!result) return;
+      const response = result.data;
+      data.competition = response.data?.competitionList;
+      data.total = response.data?.total;
+      data.tag = response.data?.competitionTagList;
     });
 
     return {
