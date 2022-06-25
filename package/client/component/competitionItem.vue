@@ -1,17 +1,17 @@
 <template>
   <div class="competition-item flex-row-left">
-    <img class="competition-image" :src="item.imageUrl" />
+    <img class="competition-image" :src="item.imageUrl" >
     <div class="competition-detail">
       <div style="flex-grow: 1">
-        <div class="competition-detail-name">{{ item.name }}</div>
+        <a :href="item.joinUrl" class="competition-detail-name">{{ item.name }}</a>
         <div class="competition-detail-description" v-html="item.description"></div>
         <div class="competition-detail-tag-group flex-row-left" style="align-items: center">
           <el-tag class="competition-detail-tag" type="info">{{ seriesName }}</el-tag>
           <el-tag class="competition-detail-tag" type="info">{{ categoryName }}</el-tag>
           <el-tag class="competition-detail-tag" type="info">{{ fieldName }}</el-tag>
           <el-tag class="competition-detail-tag" type="info">{{ difficultyName }}</el-tag>
-          <a href="" class="link">排行榜</a>
-          <a href="" class="link">参赛开源资料</a>
+          <a :href="item.rankingUrl" :class="['link',{ 'static': !item?.rankingUrl }]">排行榜</a>
+          <a :href="item.resourceUrl" :class="['link',{ 'static': !item?.resourceUrl}]">参赛开源资料</a>
         </div>
       </div>
       <div style="margin-left: 8rem; text-align: center; white-space: nowrap; color: #383838">
@@ -127,6 +127,11 @@ export default {
   font-size: 18px;
   height: 25px;
   line-height: 25px;
+	text-decoration: none;
+	color:black;
+}
+.competition-detail-name:hover,:focus{
+	color:#409eff;
 }
 .competition-detail-description {
   margin-top: 10px;
@@ -148,5 +153,10 @@ export default {
   margin: 8px;
   text-decoration: none;
   font-size: 14px;
+}
+
+.static{
+	color:gray;
+	cursor: not-allowed;
 }
 </style>
