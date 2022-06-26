@@ -26,7 +26,7 @@ const main = async () => {
     app.use('/datawhale-homepage', express.static(config.staticFilePath));
     app.use('/', express.static(config.staticFilePath));
   }
-  
+
   app.use('/about', express.static(config.aboutFilePath));
 
   // 使用getRouter是为了防止在建立dbconnection之前初始化entity

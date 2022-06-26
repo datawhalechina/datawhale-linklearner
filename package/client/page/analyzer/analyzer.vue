@@ -44,6 +44,19 @@
     </el-card>
 
     <el-divider></el-divider>
+    
+    <el-card class="analyzer-card">
+      <template #header>
+        <div class="analyzer-card-header">自定义埋点数量</div>
+      </template>
+      <el-table :data="userActionData.customLog">
+        <el-table-column prop="key" label="埋点名称" />
+        <el-table-column prop="description" label="埋点描述" />
+        <el-table-column prop="value" label="埋点数量" />
+      </el-table>
+    </el-card>
+
+    <el-divider></el-divider>
 
     <div class="flex-row-space-between">
       <el-card class="analyzer-half-card">

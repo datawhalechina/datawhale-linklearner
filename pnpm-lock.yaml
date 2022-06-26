@@ -26,8 +26,8 @@ specifiers:
   postcss-loader: ^6.2.1
   prettier: 2.5.1
   reflect-metadata: ^0.1.13
-  shadow-tracker: ^2.0.2
-  shadow-tracker-analyzer: ^1.0.1
+  shadow-tracker: ^2.0.4
+  shadow-tracker-analyzer: ^1.0.2
   ts-loader: ^9.2.6
   ts-node: ^10.4.0
   typeorm: ^0.2.41
@@ -50,7 +50,7 @@ dependencies:
   mysql: 2.18.1
   nodemon: 2.0.15
   reflect-metadata: 0.1.13
-  shadow-tracker-analyzer: 1.0.1
+  shadow-tracker-analyzer: 1.0.2
   typeorm: 0.2.41
 
 devDependencies:
@@ -72,7 +72,7 @@ devDependencies:
   mini-css-extract-plugin: 2.5.2_webpack@5.67.0
   postcss-loader: 6.2.1_webpack@5.67.0
   prettier: 2.5.1
-  shadow-tracker: 2.0.2
+  shadow-tracker: 2.0.4
   ts-loader: 9.2.6_typescript@4.5.5+webpack@5.67.0
   ts-node: 10.4.0_typescript@4.5.5
   typescript: 4.5.5
@@ -3475,12 +3475,12 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /shadow-tracker-analyzer/1.0.1:
-    resolution: {integrity: sha512-TuBXShewuqQ/h0ka4+1ffcSuBS+f8y6WGdv4/+kDbg5bRsgo3tNCIXTqGQwHmd9Xiiqsq2OzO4VAtBSMfh7wVg==}
+  /shadow-tracker-analyzer/1.0.2:
+    resolution: {integrity: sha512-+4o2dg/Uqa2z8hVCo1A9M1/klunuJ0vhnedBw7xDAm3pNHT2Q4g4zr+44SBDlP3Bjflegv74Z5ZHv94if/EHnQ==}
     dev: false
 
-  /shadow-tracker/2.0.2:
-    resolution: {integrity: sha512-FwNkojLaf5H76rIuGzVLtu7MQc9hQakUVtuQJpCOs57/0qOkLyr/Gp4a1su3VXnQbas/UIuV6YqCeDo6p/CKyA==}
+  /shadow-tracker/2.0.4:
+    resolution: {integrity: sha512-eHwgzJpDu0MM/wKZAaM+wvB0ffxsA+vTCYP6xrZl6iu+7VsSV2q/ObDL9eyCaQqvJLUEG936fqqXf50J80HLBg==}
     dev: true
 
   /shallow-clone/3.0.1:

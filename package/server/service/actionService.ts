@@ -4,6 +4,7 @@ import { config } from '../config';
 import path from 'path';
 import fse from 'fs-extra';
 import { ShadowTrackerAnalyzer } from 'shadow-tracker-analyzer';
+import { ALL_LOG_KEY, ALL_LOG_KEY_DESCRIPTION } from '../constant';
 
 export class UserActionService {
   private activityRepository = getRepository(UserActionEntity);
@@ -59,6 +60,15 @@ export class UserActionService {
     const { screenInfo, clientInfo, browserInfo } = analyzer.getDeviceInfo();
     const performanceData = analyzer.getPerformanceInfo();
 
+    const customEventData = analyzer.getCustomLogByKeys(ALL_LOG_KEY);
+    const customLogCount = Object.keys(customEventData).map(item => {
+      return {
+        key: item,
+        description: ALL_LOG_KEY_DESCRIPTION[item],
+        value: customEventData[item].length
+      }
+    });
+
     return {
       overview: overviewData,
       urlStatistic: urlStatisticData.sort((a, b) => {
@@ -75,7 +85,8 @@ export class UserActionService {
           return b.number - a.number;
         })
       },
-      performance: performanceData
+      performance: performanceData,
+      customLog: customLogCount
     };
   };
 
