@@ -10,6 +10,8 @@ const learnDetail = () =>
 const article = () => import(/* webpackChunkName: 'article' */ '../page/article/article.vue');
 const about = () => import(/* webpackChunkName: 'about' */ '../page/about/about.vue');
 const analyzer = () => import(/* webpackChunkName: 'analyzer' */ '../page/analyzer/analyzer.vue');
+const competition = () =>
+  import(/* webpackChunkName: 'knowledge' */ '../page/competition/competition.vue');
 
 const routerHashHistory = createWebHashHistory();
 
@@ -25,6 +27,10 @@ const ROUTES = [
   {
     path: '/knowledge',
     component: knowledge
+  },
+  {
+    path: '/competition',
+    component: competition
   },
   {
     path: '/learn/detail/:learnId',
