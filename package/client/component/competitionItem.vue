@@ -1,5 +1,8 @@
 <template>
-  <div class="competition-item flex-row-left" @click="jumpToUrl(item.joinUrl, 'click-join-competition')">
+  <div
+    class="competition-item flex-row-left"
+    @click="jumpToUrl(item.joinUrl, 'click-join-competition')"
+  >
     <img class="competition-image" :src="item.imageUrl" />
     <div class="competition-detail-wrapper">
       <div class="competition-detail">
@@ -12,14 +15,14 @@
           <el-tag class="competition-detail-tag" type="info">{{ difficultyName }}</el-tag>
           <div
             @click.stop="jumpToUrl(item.rankingUrl, 'click-competition-rank')"
-            :class="['link', { static: !item?.rankingUrl }]"
+            :class="['default', { static: !item?.rankingUrl }]"
             target="_blank"
           >
             排行榜
           </div>
           <div
             @click.stop="jumpToUrl(item.resourceUrl, 'click-competition-resource')"
-            :class="['link', { static: !item?.resourceUrl }]"
+            :class="['default', { static: !item?.resourceUrl }]"
             target="_blank"
           >
             参赛开源资料
@@ -74,8 +77,9 @@ export default {
     });
 
     const jumpToUrl = (url: string, key: string) => {
-      window.open(url);
       window.tracker.addCustomLog(key, { type: 'click' });
+      if (!url) return;
+      window.open(url);
     };
 
     const seriesName = computed(() => {
@@ -178,15 +182,27 @@ export default {
   margin-top: 10px;
 }
 
-.link {
+.default {
+  color: black;
   margin: 8px;
   text-decoration: none;
   font-size: 14px;
-  color: var(--el-color-primary);
+}
+
+.default:hover,
+:focus {
+  color: #709eff;
+  margin: 8px;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .static {
-  color: gray;
+  color: #909399;
   cursor: not-allowed;
+}
+.static:hover,
+:focus {
+  color: #909399;
 }
 </style>

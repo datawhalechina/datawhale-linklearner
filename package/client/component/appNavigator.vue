@@ -7,11 +7,35 @@
       mode="horizontal"
       @select="handleSelect"
     >
-      <el-menu-item class="navigator-menu-item" index="homepage"> 主页 </el-menu-item>
-      <el-menu-item class="navigator-menu-item" index="learn"> 学习项目 </el-menu-item>
-      <el-menu-item class="navigator-menu-item" index="knowledge"> 培养方案 </el-menu-item>
-      <el-menu-item class="navigator-menu-item" index="competition"> 竞赛实践 </el-menu-item>
-      <el-sub-menu index="article">
+      <el-menu-item
+        class="navigator-menu-item"
+        :class="{ 'is-active': routerIndex === 'homepage' }"
+        index="homepage"
+      >
+        主页
+      </el-menu-item>
+      <el-menu-item
+        :class="{ 'is-active': routerIndex === 'learn' }"
+        class="navigator-menu-item"
+        index="learn"
+      >
+        学习项目
+      </el-menu-item>
+      <el-menu-item
+        class="navigator-menu-item"
+        index="knowledge"
+        :class="{ 'is-active': routerIndex === 'knowledge' }"
+      >
+        培养方案
+      </el-menu-item>
+      <el-menu-item
+        class="navigator-menu-item"
+        index="competition"
+        :class="{ 'is-active': routerIndex === 'competition' }"
+      >
+        竞赛实践
+      </el-menu-item>
+      <el-sub-menu index="article" :class="{ 'is-active': routerIndex === 'article' }">
         <template #title>干货文章</template>
         <el-menu-item index="article1">科研求职</el-menu-item>
         <el-menu-item index="article2">项目实战</el-menu-item>
@@ -19,7 +43,13 @@
         <el-menu-item index="article4">基础知识</el-menu-item>
         <el-menu-item index="article5">实践排坑</el-menu-item>
       </el-sub-menu>
-      <el-menu-item class="navigator-menu-item" index="about"> 关于我们 </el-menu-item>
+      <el-menu-item
+        class="navigator-menu-item"
+        index="about"
+        :class="{ 'is-active': routerIndex === 'about' }"
+      >
+        关于我们
+      </el-menu-item>
     </el-menu>
     <div class="navigator-right">
       <el-popover placement="bottom" :width="200" trigger="hover">
@@ -37,6 +67,7 @@
 </template>
 
 <script lang="ts">
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import githubLogo from '../asset/github.svg';
 import wechatLogo from '../asset/wechat.svg';
@@ -44,7 +75,7 @@ import wechatLogo from '../asset/wechat.svg';
 export default {
   setup() {
     const router = useRouter();
-
+    const routerIndex = ref('');
     const getDefaultActiveMenu = (routerIndex: string) => {
       // routerIndex与menuIndex的映射关系
       const ROUTER_MENU_RELATION = {
@@ -94,14 +125,14 @@ export default {
         about: '/about'
       };
 
-      const routerIndex = MENU_ROUTER_RELATION[key] || '/';
-      router.push(routerIndex);
+      routerIndex.value = MENU_ROUTER_RELATION[key] || '/';
+      router.push(routerIndex.value);
     };
 
     const goGithub = () => {
       window.open('https://github.com/datawhalechina');
     };
-    return { getDefaultActiveMenu, handleSelect, goGithub };
+    return { getDefaultActiveMenu, handleSelect, goGithub, routerIndex };
   },
   components: { githubLogo, wechatLogo }
 };

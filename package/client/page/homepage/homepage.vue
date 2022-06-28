@@ -18,7 +18,7 @@
         <template #header>
           <div class="card-header flex-row-space-between">
             <div>热门学习</div>
-            <el-button class="card-header-button" type="text">查看更多</el-button>
+            <el-button @click="toLearn" class="card-header-button" type="text">查看更多</el-button>
           </div>
         </template>
         <div v-for="(item, index) in learn" :key="`learn-${index}`">
@@ -85,6 +85,10 @@ export default {
       window.open(url);
     };
 
+    const toLearn = () => {
+      router.push('/learn');
+    };
+
     onMounted(async () => {
       const res = await http.get('/api/homepage');
       const { activity, banner, learn } = res.data.data;
@@ -96,7 +100,8 @@ export default {
     return {
       ...toRefs(data),
       jumpToUrl,
-      handleLearnItemClick
+      handleLearnItemClick,
+      toLearn
     };
   }
 };
