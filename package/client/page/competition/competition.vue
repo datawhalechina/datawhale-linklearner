@@ -89,8 +89,8 @@ export default {
   components: { competitionItem, appFooter },
   setup() {
     const data = reactive({
-      competition: [],
-      tag: [],
+      competition: [] as Competition[],
+      tag: [] as Tag[],
       total: 0
     });
     const currentPage = ref(1);
