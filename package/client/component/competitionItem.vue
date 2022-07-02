@@ -191,7 +191,7 @@ export default {
 
 .default:hover,
 :focus {
-  color: #709eff;
+  color: var(--el-color-primary);
   margin: 8px;
   text-decoration: none;
   font-size: 14px;
