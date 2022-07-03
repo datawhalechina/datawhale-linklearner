@@ -1,18 +1,24 @@
 <template>
   <div class="competition">
     <div class="competition-tag">
-      <div v-for="(item, index) of Object.keys(formattedTagList)" :key="`competition-tag-${index}`">
-        <label style="margin-right: 16px; font-weight: bold">{{ item }}</label>
-        <el-button
-          v-for="(ele, index) of formattedTagList[item]"
-          :key="`button-${index}`"
-          :plain="true"
-          class="competition-tag-item"
-          :class="{ 'tag-focus': Object.values(selectedTags).includes(ele.id) }"
-          @click="handleTagChange(ele)"
-        >
-          {{ ele.name }}
-        </el-button>
+      <div
+        class="flex-row-left competition-tag-wrapper"
+        v-for="(item, index) of Object.keys(formattedTagList)"
+        :key="`competition-tag-${index}`"
+      >
+        <label class="competition-tag-label">{{ item }}</label>
+        <div>
+          <el-button
+            v-for="(ele, index) of formattedTagList[item]"
+            :key="`button-${index}`"
+            :plain="true"
+            class="competition-tag-item"
+            :class="{ 'tag-focus': Object.values(selectedTags).includes(ele.id) }"
+            @click="handleTagChange(ele)"
+          >
+            {{ ele.name }}
+          </el-button>
+        </div>
       </div>
     </div>
     <el-divider></el-divider>
@@ -177,6 +183,8 @@ export default {
   border: 1px solid #c2c2c2;
   text-align: center;
   color: #454545;
+  padding: 0;
+  overflow: hidden;
 }
 .competition-list:last-child .divider {
   border: none;
@@ -187,5 +195,14 @@ export default {
   border-color: rgb(64, 158, 255);
   background-color: rgb(255, 255, 255);
   outline: 0;
+}
+.competition-tag-wrapper {
+  align-content: center;
+}
+.competition-tag-label {
+  margin-right: 16px;
+  font-weight: bold;
+  line-height: 60px;
+  flex-shrink: 0;
 }
 </style>
