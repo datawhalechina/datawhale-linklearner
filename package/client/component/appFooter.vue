@@ -15,7 +15,7 @@
   margin: 0;
 }
 .footer {
-  margin: 16px;
+  margin: 16px 0;
   width: 100%;
   height: 20px;
 }
