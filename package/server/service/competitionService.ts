@@ -36,7 +36,7 @@ export class CompetitionService {
         ...tag
       }),
       order: {
-        rank: 'DESC'
+        rank: 'ASC'
       }
     });
   };
