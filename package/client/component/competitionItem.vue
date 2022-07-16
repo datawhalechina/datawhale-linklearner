@@ -183,7 +183,7 @@ export default {
 }
 
 .default {
-  color: black;
+  color: #709eff;
   margin: 8px;
   text-decoration: none;
   font-size: 14px;
