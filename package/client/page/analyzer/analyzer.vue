@@ -44,7 +44,7 @@
     </el-card>
 
     <el-divider></el-divider>
-    
+
     <el-card class="analyzer-card">
       <template #header>
         <div class="analyzer-card-header">自定义埋点数量</div>
@@ -189,7 +189,7 @@ export default {
 
         data.userActionData = res.data.data;
       } catch (e) {
-        ElMessage.error('日志太多，分析不过来了QAQ');
+        ElMessage.error(e.response?.data?.message || '日志太多，分析不过来了QAQ');
       }
     };
 
